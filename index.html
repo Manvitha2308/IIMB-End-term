@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WealthGrow Mutual Funds</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <i class="fas fa-chart-line"></i>
+      <h1>RR Wealth</h1>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav id="mainNav">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#calculators">Calculators</a>
+      <a href="#performance">Performance</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#blogs">Blogs</a>
+      <a href="#contact">Contact</a>
+      <a href="https://rrwealth.in">Login</a>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h2>Smart Investing for Your Future</h2>
+    <p>We help you grow your wealth through expertly managed mutual fund portfolios tailored to your financial goals and risk appetite.</p>
+    <div>
+      <a href="#services" class="btn">Explore Services</a>
+      <a href="#contact" class="btn btn-outline">Get Started</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-title">
+      <h2>About RR Wealth</h2>
+      <p>Your trusted partner in financial growth and security</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <i class="fas fa-bullseye"></i>
+        <h3>Our Vision</h3>
+        <p>To democratize wealth creation by making professional investment management accessible to everyone, regardless of their financial knowledge or net worth.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-hand-holding-heart"></i>
+        <h3>Our Mission</h3>
+        <p>To empower individuals with tools, knowledge, and personalized guidance to make informed investment decisions that align with their life goals.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-star"></i>
+        <h3>Our Values</h3>
+        <p>Transparency, Integrity, Customer-first approach, Innovation, and Excellence in everything we do.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="grid">
+      <div class="stat-card">
+        <i class="fas fa-users"></i>
+        <h3>50+</h3>
+        <p>Happy Investors</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-rupee-sign"></i>
+        <h3>₹1 Cr+</h3>
+        <p>Assets Under Advisory</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-medal"></i>
+        <h3>4+</h3>
+        <p>Years of Experience</p>
+      </div>
+     
+  </section>
+
+  <section id="services">
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p>Comprehensive solutions for all your investment needs</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <i class="fas fa-chart-pie"></i>
+        <h3>Investment Planning</h3>
+        <p>Customized investment strategies tailored to your financial goals and risk tolerance.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-piggy-bank"></i>
+        <h3>Wealth Management</h3>
+        <p>Holistic approach to growing and protecting your wealth through diversified portfolios.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-retweet"></i>
+        <h3>Portfolio Rebalancing</h3>
+        <p>Regular review and adjustment of your portfolio to maintain optimal asset allocation.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Risk Management</h3>
+        <p>Strategies to protect your investments from market volatility and unexpected events.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculators">
+    <div class="section-title">
+      <h2>Financial Calculators</h2>
+      <p>Powerful tools to help you plan your financial future</p>
+    </div>
+    <div class="calculator-grid" id="calculatorCards">
+      <div class="card" onclick="showCalculator('sipCalculator')">
+        <i class="fas fa-calculator"></i>
+        <h3>SIP Calculator</h3>
+        <p>Calculate returns on your Systematic Investment Plan</p>
+      </div>
+      <div class="card" onclick="showCalculator('lumpsumCalculator')">
+        <i class="fas fa-money-bill-wave"></i>
+        <h3>Lumpsum Calculator</h3>
+        <p>Calculate future value of your one-time investment</p>
+      </div>
+      <div class="card" onclick="showCalculator('swpCalculator')">
+        <i class="fas fa-piggy-bank"></i>
+        <h3>SWP Calculator</h3>
+        <p>Calculate withdrawals from your investment</p>
+      </div>
+      <div class="card" onclick="showCalculator('retirementCalculator')">
+        <i class="fas fa-umbrella-beach"></i>
+        <h3>Retirement Calculator</h3>
+        <p>Plan your retirement corpus</p>
+      </div>
+    </div>
+
+    <!-- SIP Calculator -->
+    <div id="sipCalculator" class="calculator" style="display: none;">
+      <div class="calculator-container">
+        <div class="input-section">
+          <h2>SIP Calculator</h2>
+          <label>Monthly Investment (₹): <input type="number" id="sipAmount" value="5000" oninput="syncSlider(this, 'sipAmountSlider')"></label>
+          <input type="range" id="sipAmountSlider" min="1000" max="100000" step="1000" value="5000" oninput="syncInput(this, 'sipAmount')">
+
+          <label>Investment Period (Years): <input type="number" id="sipYears" value="10" oninput="syncSlider(this, 'sipYearsSlider')"></label>
+          <input type="range" id="sipYearsSlider" min="1" max="40" value="10" oninput="syncInput(this, 'sipYears')">
+
+          <label>Expected Return (% p.a): <input type="number" id="sipReturn" value="12" oninput="syncSlider(this, 'sipReturnSlider')"></label>
+          <input type="range" id="sipReturnSlider" min="1" max="30" value="12" oninput="syncInput(this, 'sipReturn')">
+          
+          <button class="btn" onclick="showCalculatorCards()"><i class="fas fa-arrow-left"></i> Back to Calculators</button>
+        </div>
+        <div class="chart-section">
+          <div class="result" id="sipResult"></div>
+          <div class="chart-container">
+            <canvas id="sipChart"></canvas>
+          </div>
+          <div class="result-details" id="sipDetails"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lumpsum Calculator -->
+    <div id="lumpsumCalculator" class="calculator" style="display: none;">
+      <div class="calculator-container">
+        <div class="input-section">
+          <h2>Lumpsum Calculator</h2>
+          <label>Investment Amount (₹): <input type="number" id="lumpAmount" value="100000" oninput="syncSlider(this, 'lumpAmountSlider')"></label>
+          <input type="range" id="lumpAmountSlider" min="50000" max="1000000" step="10000" value="100000" oninput="syncInput(this, 'lumpAmount')">
+
+          <label>Investment Period (Years): <input type="number" id="lumpYears" value="10" oninput="syncSlider(this, 'lumpYearsSlider')"></label>
+          <input type="range" id="lumpYearsSlider" min="1" max="40" value="10" oninput="syncInput(this, 'lumpYears')">
+
+          <label>Expected Return (% p.a): <input type="number" id="lumpReturn" value="12" oninput="syncSlider(this, 'lumpReturnSlider')"></label>
+          <input type="range" id="lumpReturnSlider" min="1" max="30" value="12" oninput="syncInput(this, 'lumpReturn')">
+          
+          <button class="btn" onclick="showCalculatorCards()"><i class="fas fa-arrow-left"></i> Back to Calculators</button>
+        </div>
+        <div class="chart-section">
+          <div class="result" id="lumpResult"></div>
+          <div class="chart-container">
+            <canvas id="lumpChart"></canvas>
+          </div>
+          <div class="result-details" id="lumpDetails"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SWP Calculator -->
+    <div id="swpCalculator" class="calculator" style="display: none;">
+      <div class="calculator-container">
+        <div class="input-section">
+          <h2>SWP Calculator</h2>
+          <label>Investment Amount (₹): <input type="number" id="swpAmount" value="1000000" oninput="syncSlider(this, 'swpAmountSlider')"></label>
+          <input type="range" id="swpAmountSlider" min="100000" max="10000000" step="100000" value="1000000" oninput="syncInput(this, 'swpAmount')">
+
+          <label>Withdrawal Amount (Monthly ₹): <input type="number" id="swpWithdrawal" value="10000" oninput="syncSlider(this, 'swpWithdrawalSlider')"></label>
+          <input type="range" id="swpWithdrawalSlider" min="1000" max="100000" step="1000" value="10000" oninput="syncInput(this, 'swpWithdrawal')">
+
+          <label>Withdrawal Period (Years): <input type="number" id="swpYears" value="10" oninput="syncSlider(this, 'swpYearsSlider')"></label>
+          <input type="range" id="swpYearsSlider" min="1" max="40" value="10" oninput="syncInput(this, 'swpYears')">
+
+          <label>Expected Return (% p.a): <input type="number" id="swpReturn" value="8" oninput="syncSlider(this, 'swpReturnSlider')"></label>
+          <input type="range" id="swpReturnSlider" min="1" max="30" value="8" oninput="syncInput(this, 'swpReturn')">
+          
+          <button class="btn" onclick="showCalculatorCards()"><i class="fas fa-arrow-left"></i> Back to Calculators</button>
+        </div>
+        <div class="chart-section">
+          <div class="result" id="swpResult"></div>
+          <div class="chart-container">
+            <canvas id="swpChart"></canvas>
+          </div>
+          <div class="result-details" id="swpDetails"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Retirement Calculator -->
+    <div id="retirementCalculator" class="calculator" style="display: none;">
+      <div class="calculator-container">
+        <div class="input-section">
+          <h2>Retirement Calculator</h2>
+          <label>Current Age (Years): <input type="number" id="currentAge" value="30" oninput="syncSlider(this, 'currentAgeSlider')"></label>
+          <input type="range" id="currentAgeSlider" min="20" max="70" value="30" oninput="syncInput(this, 'currentAge')">
+
+          <label>Retirement Age (Years): <input type="number" id="retirementAge" value="60" oninput="syncSlider(this, 'retirementAgeSlider')"></label>
+          <input type="range" id="retirementAgeSlider" min="40" max="80" value="60" oninput="syncInput(this, 'retirementAge')">
+
+          <label>Life Expectancy (Years): <input type="number" id="lifeExpectancy" value="85" oninput="syncSlider(this, 'lifeExpectancySlider')"></label>
+          <input type="range" id="lifeExpectancySlider" min="70" max="100" value="85" oninput="syncInput(this, 'lifeExpectancy')">
+
+          <label>Monthly Expenses (Current ₹): <input type="number" id="currentExpenses" value="30000" oninput="syncSlider(this, 'currentExpensesSlider')"></label>
+          <input type="range" id="currentExpensesSlider" min="10000" max="200000" step="5000" value="30000" oninput="syncInput(this, 'currentExpenses')">
+
+          <label>Inflation Rate (% p.a): <input type="number" id="inflationRate" value="6" oninput="syncSlider(this, 'inflationRateSlider')"></label>
+          <input type="range" id="inflationRateSlider" min="1" max="15" value="6" oninput="syncInput(this, 'inflationRate')">
+
+          <label>Pre-Retirement Returns (% p.a): <input type="number" id="preRetirementReturn" value="10" oninput="syncSlider(this, 'preRetirementReturnSlider')"></label>
+          <input type="range" id="preRetirementReturnSlider" min="1" max="30" value="10" oninput="syncInput(this, 'preRetirementReturn')">
+
+          <label>Post-Retirement Returns (% p.a): <input type="number" id="postRetirementReturn" value="7" oninput="syncSlider(this, 'postRetirementReturnSlider')"></label>
+          <input type="range" id="postRetirementReturnSlider" min="1" max="30" value="7" oninput="syncInput(this, 'postRetirementReturn')">
+          
+          <button class="btn" onclick="showCalculatorCards()"><i class="fas fa-arrow-left"></i> Back to Calculators</button>
+        </div>
+        <div class="chart-section">
+          <div class="result" id="retirementResult"></div>
+          <div class="chart-container">
+            <canvas id="retirementChart"></canvas>
+          </div>
+          <div class="result-details" id="retirementDetails"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="performance" class="fund-performance">
+    <div class="section-title">
+      <h2>Fund Performance</h2>
+      <p>Top performing funds in our recommended portfolios</p>
+    </div>
+    <table class="performance-table">
+      <thead>
+        <tr>
+          <th>Fund Name</th>
+          <th>Category</th>
+          <th>1 Year</th>
+          <th>3 Years</th>
+          <th>5 Years</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Axis Bluechip Fund</td>
+          <td>Large Cap</td>
+          <td class="positive">+18.5%</td>
+          <td class="positive">+15.2%</td>
+          <td class="positive">+14.8%</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>Mirae Asset Emerging Bluechip</td>
+          <td>Large & Mid Cap</td>
+          <td class="positive">+22.3%</td>
+          <td class="positive">+18.7%</td>
+          <td class="positive">+17.5%</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>SBI Small Cap Fund</td>
+          <td>Small Cap</td>
+          <td class="positive">+25.6%</td>
+          <td class="positive">+20.1%</td>
+          <td class="positive">+19.3%</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr>
+          <td>ICICI Pru Bond Fund</td>
+          <td>Corporate Bond</td>
+          <td class="positive">+8.2%</td>
+          <td class="positive">+7.9%</td>
+          <td class="positive">+8.1%</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>Parag Parikh Flexi Cap</td>
+          <td>Flexi Cap</td>
+          <td class="positive">+19.8%</td>
+          <td class="positive">+16.5%</td>
+          <td class="positive">+15.9%</td>
+          <td>★★★★★</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="testimonials">
+    <div class="section-title">
+      <h2>Client Success Stories</h2>
+      <p>What our investors say about their experience with us</p>
+    </div>
+    <div class="grid">
+      <div class="card testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Priya K.">
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p>"RR Wealth transformed my approach to investing. Their SIP recommendations helped me grow my portfolio by 35% in just 2 years while managing risk effectively."</p>
+        <h4>Priya K.</h4>
+        <p>Marketing Professional, Mumbai</p>
+      </div>
+      <div class="card testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul S.">
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p>"The retirement calculator was eye-opening. It showed me I needed to save more, and their suggested portfolio adjustments put me back on track for my goals."</p>
+        <h4>Rahul S.</h4>
+        <p>IT Manager, Bangalore</p>
+      </div>
+      <div class="card testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Ananya M.">
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>"As a beginner, I was overwhelmed by mutual funds. Their educational resources and patient advisors made the process simple and stress-free."</p>
+        <h4>Ananya M.</h4>
+        <p>Entrepreneur, Delhi</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blogs">
+    <div class="section-title">
+      <h2>Latest Insights</h2>
+      <p>Educational articles to help you make informed decisions</p>
+    </div>
+    <div class="grid">
+      <div class="card blog-card">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="SIP Guide">
+        <h3>The Power of SIP: Building Wealth One Step at a Time</h3>
+        <p class="date">June 15, 2025</p>
+        <p>Discover how Systematic Investment Plans can help you create substantial wealth through disciplined investing, regardless of market conditions.</p>
+        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="card blog-card">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tax Saving">
+        <h3>Tax-Saving Mutual Funds: ELSS vs Other Options</h3>
+        <p class="date">May 28, 2025</p>
+        <p>A comprehensive comparison of ELSS funds with other tax-saving instruments to help you make the best choice for your financial situation.</p>
+        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="card blog-card">
+        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Market Trends">
+        <h3>Market Trends 2025: Where to Invest for Maximum Returns</h3>
+        <p class="date">May 10, 2025</p>
+        <p>Our experts analyze emerging market trends and sectors poised for growth in the coming year to guide your investment decisions.</p>
+        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="#" class="btn">View All Articles</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title">
+      <h2>Get In Touch</h2>
+      <p>We're here to answer your questions and help you get started</p>
+    </div>
+    <div class="grid" style="margin-bottom: 3rem;">
+      <div class="card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Our Office</h3>
+        <p>FF-01, PVR Residency,<br>6/12 Brodipet, beside Nuziveedu Seeds,<br>Guntur, Andhra Pradesh, 522002</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Call Us</h3>
+        <p>+91 70755 31333<br>Mon-Sat, 9AM-6PM</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email Us</h3>
+        <p>rrrwealthmfd@gmail.com</p>
+      </div>
+    </div>
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number">
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <select id="subject" required>
+          <option value="">Select a subject</option>
+          <option value="general">General Inquiry</option>
+          <option value="investment">Investment Advice</option>
+          <option value="portfolio">Portfolio Review</option>
+          <option value="technical">Technical Support</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>RR Wealth</h3>
+        <p>Your trusted partner in mutual fund investments and financial planning since 2024.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#calculators">Calculators</a></li>
+          <li><a href="#performance">Fund Performance</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Tools</h3>
+        <ul>
+          <li><a href="#" onclick="showCalculator('sipCalculator')">SIP Calculator</a></li>
+          <li><a href="#" onclick="showCalculator('lumpsumCalculator')">Lumpsum Calculator</a></li>
+          <li><a href="#" onclick="showCalculator('retirementCalculator')">Retirement Planner</a></li>
+          <li><a href="#" onclick="showCalculator('swpCalculator')">SWP Calculator</a></li>
+        </ul>
+      </div>
+      
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 RR Wealth. All rights reserved. | ARN-307972 | Mutual Fund investments are subject to market risks, read all scheme related documents carefully before investing.</p>
+    </div>
+  </footer>
+
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+  <script src="script.js"></script>
+
+</body>
+</html>
